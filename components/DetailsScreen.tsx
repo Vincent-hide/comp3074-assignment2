@@ -10,12 +10,9 @@ export const DetailsScreen = ({navigation, route}: any) => {
   console.log({id, userId, title})
 
   useEffect(() => {
-    fetch('https://jsonplaceholder.typicode.com/users')
+    fetch(`https://jsonplaceholder.typicode.com/users/${userId}`)
     .then(res => res.json())
-    .then(res => {
-      let author = res.find(user => user.id === userId);
-      setData(author);
-    })
+    .then(res => setData(res))
     .catch(err => console.log('something went wrong'))
   }, [])
 
